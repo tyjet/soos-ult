@@ -10,15 +10,24 @@ import (
 var logger *zap.Logger
 var sugar *zap.SugaredLogger
 
+func NewLogger() (*zap.Logger, error) {
+	logger, err := zap.NewProduction()
+	if err != nil {
+		log.Printf("unable to initialize zap logger: %v", err)
+		return nil, err
+	}
+
+	return logger, nil
+}
+
 func Setup() error {
 	if logger != nil {
 		logger.Warn("attempting to reinitialize logger")
 		return nil
 	}
 
-	tmp, err := zap.NewProduction()
+	tmp, err := NewLogger()
 	if err != nil {
-		log.Printf("unable to initialize zap logger: %v", err)
 		return err
 	}
 
