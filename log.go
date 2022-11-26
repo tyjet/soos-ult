@@ -1,4 +1,4 @@
-package log
+package soosult
 
 import (
 	"log"

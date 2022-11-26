@@ -1,4 +1,4 @@
-module github.com/tyjet/log
+module github.com/tyjet/soos-ult
 
 go 1.19
 
